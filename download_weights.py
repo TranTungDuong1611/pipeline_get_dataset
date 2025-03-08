@@ -6,21 +6,9 @@ import subprocess
 import sys
 
 import gdown
-import pandas as pd
-import torch
-from PIL import Image
-
-gan_control_repo = 'https://github.com/amazon-science/gan-control.git'
-gan_control_dir = 'gan-control'
-
-# clone gan-control repo
-if not os.path.exists(gan_control_dir):
-    subprocess.run(["git", "clone", gan_control_repo], check=True)
-else:
-    print(f"Repository '{gan_control_dir}' is already exist!")
 
 # down load weights
-if glob.glob(os.path.join(os.getcwd(), '*.part*')) is None:
+if len(glob.glob(os.path.join(os.getcwd(), '*.part*'))) == 0:
     url = 'https://drive.google.com/file/d/19v0lX69fV6zQv2HbbYUVr9gZ8ZKvUzHq/view'
     gdown.download(url, os.getcwd(), fuzzy=True, quiet=False)
 
